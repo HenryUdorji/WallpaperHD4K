@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="android:statusBarColor">@color/color_primary</item>
-    </style>
-
     <style name="SmallTextStyle" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/ubuntu_regular</item>
         <item name="android:textSize">@dimen/text_size_small</item>
