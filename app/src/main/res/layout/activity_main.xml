@@ -8,6 +8,7 @@
     tools:context=".ui.MainActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,5 +24,32 @@
             app:layout_constraintTop_toTopOf="parent" />
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:navGraph="@navigation/nav_graph" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
+        app:labelVisibilityMode="selected"
+        app:itemIconSize="24dp"
+        app:itemTextColor="@color/bottom_menu_selector"
+        app:itemIconTint="@color/bottom_menu_selector"
+        android:background="@color/color_primary"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

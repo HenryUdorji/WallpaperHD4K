@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.hashconcepts.wallpaperhd4k.ui.category.CategoryFragment"
+        android:label="category_fragment"
+        tools:layout="@layout/category_fragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.hashconcepts.wallpaperhd4k.ui.favourite.FavouriteFragment"
+        android:label="favourite_fragment"
+        tools:layout="@layout/favourite_fragment" >
+        <action
+            android:id="@+id/action_favouriteFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.hashconcepts.wallpaperhd4k.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.hashconcepts.wallpaperhd4k.ui.details.DetailsFragment"
+        android:label="details_fragment"
+        tools:layout="@layout/details_fragment" />
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.hashconcepts.wallpaperhd4k.ui.list.ListFragment"
+        android:label="list_fragment"
+        tools:layout="@layout/list_fragment" >
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+</navigation>
