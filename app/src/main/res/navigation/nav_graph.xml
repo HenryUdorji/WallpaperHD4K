@@ -38,17 +38,18 @@
         tools:layout="@layout/home_fragment" >
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/slide_in_from_right"
-            app:popExitAnim="@anim/slide_out_to_left" />
+            app:destination="@id/detailsFragment"/>
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.hashconcepts.wallpaperhd4k.ui.details.DetailsFragment"
         android:label="details_fragment"
-        tools:layout="@layout/details_fragment" />
+        tools:layout="@layout/details_fragment" >
+
+        <argument
+            android:name="photo"
+            app:argType="com.hashconcepts.wallpaperhd4k.data.models.Photo" />
+    </fragment>
     <fragment
         android:id="@+id/listFragment"
         android:name="com.hashconcepts.wallpaperhd4k.ui.list.ListFragment"

@@ -9,6 +9,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hashconcepts.wallpaperhd4k.R
 import com.hashconcepts.wallpaperhd4k.databinding.ActivityMainBinding
+import com.hashconcepts.wallpaperhd4k.extentions.hide
+import com.hashconcepts.wallpaperhd4k.extentions.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,5 +29,18 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.detailsFragment -> {
+                    binding.bottomNav.hide()
+                    binding.appBar.hide()
+                }
+                else -> {
+                    binding.bottomNav.show()
+                    binding.appBar.show()
+                }
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hashconcepts.wallpaperhd4k.R
 import com.hashconcepts.wallpaperhd4k.data.models.Photo
 import com.hashconcepts.wallpaperhd4k.databinding.ItemRvWallpaperBinding
+import com.makeramen.roundedimageview.RoundedImageView
 import com.squareup.picasso.Picasso
 
 class WallpaperPagingAdapter : PagingDataAdapter<Photo, WallpaperPagingAdapter.WallpaperViewHolder>(
@@ -40,17 +41,20 @@ class WallpaperPagingAdapter : PagingDataAdapter<Photo, WallpaperPagingAdapter.W
     inner class WallpaperViewHolder(private val binding: ItemRvWallpaperBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(photo: Photo) {
-            Picasso.get().load(photo.src.portrait).placeholder(R.color.color_accent).into(binding.image)
+            with(binding.image) {
+                Picasso.get().load(photo.src.portrait).into(this)
+                this.transitionName = photo.id.toString()
 
-            binding.root.setOnClickListener {
-                onItemClickListener?.let { it(photo.id) }
+                this.setOnClickListener {
+                    onItemClickListener?.let { it(photo, this) }
+                }
             }
         }
     }
 
-    private var onItemClickListener: ((photoID: Int) -> Unit) ? = null
+    private var onItemClickListener: ((photo: Photo, imageView: RoundedImageView) -> Unit) ? = null
 
-    fun setOnItemClickListener(listener: (photoID: Int) -> Unit) {
+    fun setOnItemClickListener(listener: (photo: Photo, imageView: RoundedImageView) -> Unit) {
         onItemClickListener = listener
     }
 }

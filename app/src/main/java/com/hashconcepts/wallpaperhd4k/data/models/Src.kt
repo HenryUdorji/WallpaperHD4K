@@ -1,5 +1,9 @@
 package com.hashconcepts.wallpaperhd4k.data.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Src(
     val landscape: String,
     val large: String,
@@ -9,4 +13,4 @@ data class Src(
     val portrait: String,
     val small: String,
     val tiny: String
-)
+): Parcelable

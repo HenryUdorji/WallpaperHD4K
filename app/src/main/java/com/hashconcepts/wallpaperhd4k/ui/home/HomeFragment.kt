@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
 import com.hashconcepts.wallpaperhd4k.databinding.HomeFragmentBinding
 import com.hashconcepts.wallpaperhd4k.ui.home.adapter.WallpaperLoadStateAdapter
@@ -22,6 +25,12 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
     private lateinit var wallpaperPagingAdapter: WallpaperPagingAdapter
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,9 +71,12 @@ class HomeFragment : Fragment() {
             )
             setHasFixedSize(true)
         }
-        wallpaperPagingAdapter.setOnItemClickListener { photoID ->
-            Snackbar.make(binding.root, photoID.toString(), Snackbar.LENGTH_SHORT).show()
+        wallpaperPagingAdapter.setOnItemClickListener { photo, imageView ->
+            val extras = FragmentNavigatorExtras(imageView to photo.id.toString())
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(photo)
+            findNavController().navigate(action, extras)
         }
+        binding.recyclerView.post { startPostponedEnterTransition() }
     }
 
 }
