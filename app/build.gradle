@@ -20,10 +20,25 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
+            storeFile file("C:/Users/ifechukwu.udorji/WorkFolder/Personal/Android/WallpaperHD4K/HashConceptsKey.jks")
+            storePassword "@Henry1998"
+            keyAlias "HashConceptsKey"
+            keyPassword "@Henry1998"
+        }
+    }
+
+    buildTypes {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -74,7 +89,7 @@ dependencies {
     //Paging
     implementation "androidx.paging:paging-runtime-ktx:3.1.0"
 
-    //rounded image
+    //Rounded image
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //Retrofit
@@ -85,7 +100,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:4.9.1"
     implementation "com.squareup.okhttp3:okhttp-urlconnection:4.9.1"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'

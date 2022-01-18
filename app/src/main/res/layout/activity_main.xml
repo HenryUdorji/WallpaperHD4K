@@ -14,10 +14,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/app_bar_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             style="@style/TitleTextStyle"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -50,6 +52,7 @@
         app:itemTextColor="@color/bottom_menu_selector"
         app:itemIconTint="@color/bottom_menu_selector"
         android:background="@color/color_primary"
+        app:itemTextAppearanceActive="@style/BottomNavigationStyle"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

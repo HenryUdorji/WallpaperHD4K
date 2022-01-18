@@ -17,4 +17,8 @@
         <item name="android:textSize">@dimen/text_size_large</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+    </style>
 </resources>

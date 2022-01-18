@@ -9,7 +9,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hashconcepts.wallpaperhd4k.R
 import com.hashconcepts.wallpaperhd4k.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
@@ -25,9 +27,5 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(navController)
-
-        /*val navController = this.findNavController(R.id.main_host_fragment)
-        val navView: BottomNavigationView = findViewById(R.id.bottom_nav)
-        navView.setupWithNavController(navController)*/
     }
 }
