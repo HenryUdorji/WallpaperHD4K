@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <ImageView
             android:id="@+id/wallpaper_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,4 +33,26 @@
         app:tint="@color/white"
         android:layout_gravity="start"/>
 
+    <ImageButton
+        android:id="@+id/btn_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_bg"
+        app:srcCompat="@drawable/ic_favourite_white"
+        app:tint="@color/white"
+        android:layout_gravity="end"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/download_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="20dp"
+        app:fabSize="normal"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/ic_download"
+        android:layout_gravity="bottom|end"
+        android:contentDescription="@string/app_name" />
 </FrameLayout>

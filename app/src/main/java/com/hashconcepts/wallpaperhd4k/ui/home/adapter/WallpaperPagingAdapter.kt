@@ -2,6 +2,7 @@ package com.hashconcepts.wallpaperhd4k.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -52,9 +53,9 @@ class WallpaperPagingAdapter : PagingDataAdapter<Photo, WallpaperPagingAdapter.W
         }
     }
 
-    private var onItemClickListener: ((photo: Photo, imageView: RoundedImageView) -> Unit) ? = null
+    private var onItemClickListener: ((photo: Photo, imageView: ImageView) -> Unit) ? = null
 
-    fun setOnItemClickListener(listener: (photo: Photo, imageView: RoundedImageView) -> Unit) {
+    fun setOnItemClickListener(listener: (photo: Photo, imageView: ImageView) -> Unit) {
         onItemClickListener = listener
     }
 }
