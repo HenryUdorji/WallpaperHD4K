@@ -13,11 +13,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
 import com.hashconcepts.wallpaperhd4k.databinding.HomeFragmentBinding
+import com.hashconcepts.wallpaperhd4k.extentions.showKProgressHUD
 import com.hashconcepts.wallpaperhd4k.ui.home.adapter.WallpaperLoadStateAdapter
 import com.hashconcepts.wallpaperhd4k.ui.home.adapter.WallpaperPagingAdapter
+import com.kaopiz.kprogresshud.KProgressHUD
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @AndroidEntryPoint
@@ -25,6 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
     private lateinit var wallpaperPagingAdapter: WallpaperPagingAdapter
+    private lateinit var progressDialog: KProgressHUD;
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

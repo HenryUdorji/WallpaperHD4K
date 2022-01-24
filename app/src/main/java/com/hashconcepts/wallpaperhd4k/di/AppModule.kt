@@ -1,5 +1,6 @@
 package com.hashconcepts.wallpaperhd4k.di
 
+import android.app.Application
 import android.content.Context
 import com.hashconcepts.wallpaperhd4k.data.remote.ServiceApi
 import com.hashconcepts.wallpaperhd4k.data.repository.WallpaperRepository
@@ -57,4 +58,8 @@ internal object AppModule {
     @Provides
     @Singleton
     fun provideNetworkManager(@ApplicationContext context: Context) = NetworkManager(context)
+
+    @Provides
+    @Singleton
+    fun provideContext(application: Application): Context = application.applicationContext
 }

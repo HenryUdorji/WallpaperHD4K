@@ -22,27 +22,16 @@
             android:scaleType="centerCrop"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/button_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/circle_bg"
-        app:srcCompat="@drawable/ic_arrow_back"
+        app:srcCompat="@drawable/ic_close"
         app:tint="@color/white"
         android:layout_gravity="start"/>
-
-    <ImageButton
-        android:id="@+id/btn_favourite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/circle_bg"
-        app:srcCompat="@drawable/ic_favourite_white"
-        app:tint="@color/white"
-        android:layout_gravity="end"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/download_fab"

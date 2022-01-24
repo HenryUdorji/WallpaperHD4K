@@ -13,7 +13,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:drawablePadding="20dp"
         android:padding="10dp"
-        android:text="Download Options"
+        android:text="Download Quality"
         android:textAlignment="center"
         android:theme="@style/TitleTextStyle" />
 
@@ -21,15 +21,14 @@
         android:id="@+id/original"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Original"
-        android:theme="@style/BodyTextStyle"
         android:layout_below="@id/download_options"
-        android:layout_marginTop="20dp"
-        android:drawablePadding="20dp"
         android:layout_gravity="center_vertical"
-        android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:background="?android:attr/selectableItemBackground"
-        />
+        android:drawablePadding="20dp"
+        android:padding="10dp"
+        android:text="Original"
+        android:theme="@style/BodyTextStyle" />
 
     <TextView
         android:id="@+id/medium"

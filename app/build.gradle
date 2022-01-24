@@ -114,6 +114,9 @@ dependencies {
 
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    //Progress Dialog
+    implementation 'com.kaopiz:kprogresshud:1.0.2'
 }
 kapt {
     correctErrorTypes true
