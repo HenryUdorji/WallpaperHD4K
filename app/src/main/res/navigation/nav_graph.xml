@@ -62,5 +62,8 @@
             app:exitAnim="@anim/slide_out_to_right"
             app:popEnterAnim="@anim/slide_in_from_right"
             app:popExitAnim="@anim/slide_out_to_left"/>
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--TEXT SIZE-->
-    <dimen name="text_size_small">11dp</dimen>
-    <dimen name="text_size_medium">15dp</dimen>
-    <dimen name="text_size_large">20dp</dimen>
+    <dimen name="text_size_small">11sp</dimen>
+    <dimen name="text_size_medium">15sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
 
     <!--SPACING-->
     <dimen name="small_spacing">5dp</dimen>
