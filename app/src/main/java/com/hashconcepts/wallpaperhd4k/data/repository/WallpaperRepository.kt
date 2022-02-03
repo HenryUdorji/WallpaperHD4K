@@ -6,6 +6,5 @@ import javax.inject.Inject
 class WallpaperRepository @Inject constructor(
     private val serviceApi: ServiceApi
 ) {
-    suspend fun getTrendingImages(page: Int) = serviceApi.getTrendingImages(page)
     suspend fun downloadImage(imageUrl: String) = serviceApi.downloadImage(imageUrl)
 }

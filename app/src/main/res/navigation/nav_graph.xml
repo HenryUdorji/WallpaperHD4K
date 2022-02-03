@@ -12,11 +12,7 @@
         tools:layout="@layout/category_fragment" >
         <action
             android:id="@+id/action_categoryFragment_to_listFragment"
-            app:destination="@id/listFragment"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/slide_in_from_right"
-            app:popExitAnim="@anim/slide_out_to_left"/>
+            app:destination="@id/listFragment"/>
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
@@ -26,10 +22,7 @@
         <action
             android:id="@+id/action_favouriteFragment_to_detailsFragment"
             app:destination="@id/detailsFragment"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/slide_in_from_right"
-            app:popExitAnim="@anim/slide_out_to_left"/>
+            />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -58,10 +51,7 @@
         <action
             android:id="@+id/action_listFragment_to_detailsFragment"
             app:destination="@id/detailsFragment"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/slide_in_from_right"
-            app:popExitAnim="@anim/slide_out_to_left"/>
+            />
         <argument
             android:name="categoryName"
             app:argType="string" />

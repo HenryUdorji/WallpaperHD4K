@@ -11,9 +11,18 @@ interface ServiceApi {
 
     @Headers("Authorization: Bearer ${Constants.API_KEY}")
     @GET("curated?per_page=30")
-    suspend fun getTrendingImages(
+    suspend fun getCuratedImages(
         @Query("page")
         page: Int = 1
+    ): WallpaperResponse
+
+    @Headers("Authorization: Bearer ${Constants.API_KEY}")
+    @GET("search?per_page=30")
+    suspend fun getImagesByCategory(
+        @Query("page")
+        page: Int = 1,
+        @Query("query")
+        query: String
     ): WallpaperResponse
 
     @Headers("Authorization: Bearer ${Constants.API_KEY}")

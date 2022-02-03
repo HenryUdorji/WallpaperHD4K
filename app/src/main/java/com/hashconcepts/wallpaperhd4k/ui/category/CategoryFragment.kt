@@ -13,7 +13,6 @@ import com.hashconcepts.wallpaperhd4k.data.models.Category
 import com.hashconcepts.wallpaperhd4k.databinding.CategoryFragmentBinding
 
 class CategoryFragment : Fragment() {
-    private lateinit var viewModel: CategoryViewModel
     private lateinit var binding: CategoryFragmentBinding
     private lateinit var categoryAdapter: CategoryAdapter
 
@@ -27,7 +26,6 @@ class CategoryFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
 
         setupRV()
     }

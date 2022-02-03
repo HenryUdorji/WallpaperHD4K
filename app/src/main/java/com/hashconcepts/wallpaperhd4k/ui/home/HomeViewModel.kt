@@ -8,6 +8,7 @@ import androidx.paging.cachedIn
 import com.hashconcepts.wallpaperhd4k.data.remote.ServiceApi
 import com.hashconcepts.wallpaperhd4k.data.repository.WallpaperDataSource
 import com.hashconcepts.wallpaperhd4k.data.repository.WallpaperRepository
+import com.hashconcepts.wallpaperhd4k.utils.Constants
 import com.hashconcepts.wallpaperhd4k.utils.NetworkManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

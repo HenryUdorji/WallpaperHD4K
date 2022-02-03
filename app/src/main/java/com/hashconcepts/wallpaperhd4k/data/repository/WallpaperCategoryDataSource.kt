@@ -12,8 +12,9 @@ import javax.inject.Inject
  * @project Wallpaper HD4K
  * @author  ifechukwu.udorji
  */
-class WallpaperDataSource @Inject constructor(
-    private val serviceApi: ServiceApi
+class WallpaperCategoryDataSource @Inject constructor(
+    private val serviceApi: ServiceApi,
+    private val category: String
 ): PagingSource<Int, Photo>() {
 
     override fun getRefreshKey(state: PagingState<Int, Photo>): Int? {
@@ -26,7 +27,7 @@ class WallpaperDataSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
         return try {
             val nextPageNumber = params.key ?: 1
-            val response = serviceApi.getCuratedImages(nextPageNumber)
+            val response = serviceApi.getImagesByCategory(nextPageNumber, category)
             LoadResult.Page(
                 data = response.photos,
                 prevKey = if (nextPageNumber > 1) nextPageNumber - 1 else null,
