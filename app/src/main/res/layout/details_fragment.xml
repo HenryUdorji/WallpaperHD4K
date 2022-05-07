@@ -32,7 +32,6 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/circle_bg"
         app:srcCompat="@drawable/ic_favourite_white"
-        app:tint="@color/white"
         android:layout_gravity="end"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

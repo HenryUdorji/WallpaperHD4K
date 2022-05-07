@@ -22,6 +22,5 @@ data class Photo (
     val photographer_url: String,
     val src: Src,
     val url: String,
-    val width: Int,
-    var favourite: Boolean
+    val width: Int
 ): Parcelable

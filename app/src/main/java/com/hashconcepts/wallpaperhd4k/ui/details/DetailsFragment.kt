@@ -28,6 +28,8 @@ class DetailsFragment : Fragment() {
     private lateinit var viewModel: DetailsViewModel
     private lateinit var binding: DetailsFragmentBinding
     private lateinit var photo: Photo
+    private var isFavourite: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,14 +66,24 @@ class DetailsFragment : Fragment() {
         }
 
         binding.buttonFav.setOnClickListener {
-            saveWallpaperToDB();
+            if (isFavourite) {
+                deleteWallpaper()
+            } else {
+                saveWallpaperToDB();
+            }
         }
 
         observe()
     }
 
+    private fun deleteWallpaper() {
+        viewModel.deleteWallpaper(photo)
+    }
+
     private fun observe() {
         viewModel.favouriteWallpaper.observe(viewLifecycleOwner) { state ->
+            isFavourite = state
+
             if (state) {
                 binding.buttonFav.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favourite_filled))
             } else {
@@ -89,7 +101,6 @@ class DetailsFragment : Fragment() {
     }
 
     private fun saveWallpaperToDB() {
-        photo.favourite = true
         viewModel.saveWallpaper(photo)
     }
 

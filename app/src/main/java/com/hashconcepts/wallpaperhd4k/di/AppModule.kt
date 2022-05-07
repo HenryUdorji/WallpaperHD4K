@@ -3,6 +3,8 @@ package com.hashconcepts.wallpaperhd4k.di
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.hashconcepts.wallpaperhd4k.data.local.WallpaperDao
 import com.hashconcepts.wallpaperhd4k.data.local.WallpaperDatabase
 import com.hashconcepts.wallpaperhd4k.data.remote.ServiceApi
@@ -62,7 +64,9 @@ internal object AppModule {
         context,
         WallpaperDatabase::class.java,
         "wallpaper"
-    ).build()
+    )
+        .fallbackToDestructiveMigration()
+        .build()
 
     @Provides
     @Singleton
@@ -79,4 +83,5 @@ internal object AppModule {
     @Provides
     @Singleton
     fun provideContext(application: Application): Context = application.applicationContext
+
 }

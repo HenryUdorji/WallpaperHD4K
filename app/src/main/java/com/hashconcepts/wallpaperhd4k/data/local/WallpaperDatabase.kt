@@ -3,6 +3,8 @@ package com.hashconcepts.wallpaperhd4k.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.hashconcepts.wallpaperhd4k.data.models.Photo
 
 /**
@@ -14,7 +16,7 @@ import com.hashconcepts.wallpaperhd4k.data.models.Photo
 @Database(
     entities = [Photo::class],
     exportSchema = false,
-    version = 1
+    version = 2
 )
 @TypeConverters(WallpaperConverter::class)
 abstract class WallpaperDatabase : RoomDatabase() {

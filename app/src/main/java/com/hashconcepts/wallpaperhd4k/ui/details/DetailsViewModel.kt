@@ -46,7 +46,6 @@ class DetailsViewModel @Inject constructor(
     fun checkWallpaperIsFavourite(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         try {
             val wallpaper = repository.checkWallpaperExist(id)
-            Timber.d("WALLPAPER ${wallpaper.toString()}")
             if (wallpaper == null) {
                 _favouriteWallpaper.postValue(false)
             } else {
@@ -62,6 +61,7 @@ class DetailsViewModel @Inject constructor(
         try {
             repository.saveFavouriteWallpaper(photo)
             _imageLiveData.postValue(Resource.Success("Wallpaper saved"))
+            _favouriteWallpaper.postValue(true)
         } catch (e: Exception) {
             _imageLiveData.postValue(Resource.Error(e.localizedMessage ?: UNEXPECTED_ERROR))
         }
@@ -125,6 +125,17 @@ class DetailsViewModel @Inject constructor(
             outputStream.close()
         } catch (e: IOException) {
             Timber.d(":::::::::::::::::::: EXCEPTION :::::::::::::::" + e.localizedMessage)
+        }
+    }
+
+    fun deleteWallpaper(photo: Photo) = viewModelScope.launch(Dispatchers.IO) {
+        _imageLiveData.postValue(Resource.Loading())
+        try {
+            repository.deleteFavouriteWallpaper(photo)
+            _imageLiveData.postValue(Resource.Success("Wallpaper deleted"))
+            _favouriteWallpaper.postValue(false)
+        } catch (e: Exception) {
+            _imageLiveData.postValue(Resource.Error(e.localizedMessage ?: UNEXPECTED_ERROR))
         }
     }
 
