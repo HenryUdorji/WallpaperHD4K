@@ -11,5 +11,6 @@
     <color name="color_primary">#1B1E1F</color>
     <color name="color_accent">#FFC500</color>
     <color name="colorRed">#FB3728</color>
+    <color name="colorGreen">#4CAF50</color>
     <color name="color_bg">#2B2C2C</color>
 </resources>

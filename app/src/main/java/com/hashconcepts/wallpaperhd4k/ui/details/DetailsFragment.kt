@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -15,7 +15,9 @@ import com.hashconcepts.wallpaperhd4k.R
 import com.hashconcepts.wallpaperhd4k.data.models.Photo
 import com.hashconcepts.wallpaperhd4k.databinding.DetailsFragmentBinding
 import com.hashconcepts.wallpaperhd4k.databinding.OptionsBottomSheetDialogBinding
+import com.hashconcepts.wallpaperhd4k.extentions.showErrorSnackbar
 import com.hashconcepts.wallpaperhd4k.extentions.showKProgressHUD
+import com.hashconcepts.wallpaperhd4k.extentions.showSuccessSnackbar
 import com.hashconcepts.wallpaperhd4k.utils.Resource
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,6 +52,8 @@ class DetailsFragment : Fragment() {
             Picasso.get().load(photo.src.portrait).into(this)
         }
 
+        viewModel.checkWallpaperIsFavourite(photo.id)
+
         binding.buttonBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
@@ -58,6 +62,35 @@ class DetailsFragment : Fragment() {
             binding.downloadFab.hide()
             showDownloadBottomSheetDialog()
         }
+
+        binding.buttonFav.setOnClickListener {
+            saveWallpaperToDB();
+        }
+
+        observe()
+    }
+
+    private fun observe() {
+        viewModel.favouriteWallpaper.observe(viewLifecycleOwner) { state ->
+            if (state) {
+                binding.buttonFav.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favourite_filled))
+            } else {
+                binding.buttonFav.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favourite_white))
+            }
+        }
+
+        viewModel.imageLiveData.observe(viewLifecycleOwner) { state ->
+            when(state) {
+                is Resource.Loading -> requireContext().showKProgressHUD("Saving...")
+                is Resource.Success -> binding.root.showSuccessSnackbar(state.data!!)
+                is Resource.Error -> binding.root.showErrorSnackbar(state.message!!)
+            }
+        }
+    }
+
+    private fun saveWallpaperToDB() {
+        photo.favourite = true
+        viewModel.saveWallpaper(photo)
     }
 
     private fun showDownloadBottomSheetDialog() {
@@ -101,7 +134,7 @@ class DetailsFragment : Fragment() {
         val progressDialog = requireContext().showKProgressHUD("Downloading wallpaper")
 
         viewModel.downloadImage(src)
-        viewModel.downloadImageLiveData.observe(viewLifecycleOwner) { state ->
+        viewModel.imageLiveData.observe(viewLifecycleOwner) { state ->
             when(state) {
                 is Resource.Success -> {
                     state.data?.let { Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show() }

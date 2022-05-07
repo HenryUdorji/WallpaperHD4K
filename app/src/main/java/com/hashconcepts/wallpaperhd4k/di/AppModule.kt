@@ -2,6 +2,9 @@ package com.hashconcepts.wallpaperhd4k.di
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
+import com.hashconcepts.wallpaperhd4k.data.local.WallpaperDao
+import com.hashconcepts.wallpaperhd4k.data.local.WallpaperDatabase
 import com.hashconcepts.wallpaperhd4k.data.remote.ServiceApi
 import com.hashconcepts.wallpaperhd4k.data.repository.WallpaperRepository
 import com.hashconcepts.wallpaperhd4k.utils.Constants.BASE_URL
@@ -53,7 +56,21 @@ internal object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(serviceApi: ServiceApi) = WallpaperRepository(serviceApi)
+    fun provideWallpaperDatabase(
+        @ApplicationContext context: Context
+    ) = Room.databaseBuilder(
+        context,
+        WallpaperDatabase::class.java,
+        "wallpaper"
+    ).build()
+
+    @Provides
+    @Singleton
+    fun provideWallpaperDao(db: WallpaperDatabase) = db.getWallpaperDao()
+
+    @Provides
+    @Singleton
+    fun provideRepository(serviceApi: ServiceApi, dao: WallpaperDao) = WallpaperRepository(serviceApi, dao)
 
     @Provides
     @Singleton
