@@ -27,7 +27,7 @@ import com.hashconcepts.wallpaperhd4k.utils.Constants.UNEXPECTED_ERROR
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
     private val repository: WallpaperRepository,
-    private val networkManager: NetworkManager,
+    networkManager: NetworkManager,
     private val context: Context
 ) : ViewModel() {
 
@@ -35,9 +35,6 @@ class DetailsViewModel @Inject constructor(
 
     private val _imageLiveData = MutableLiveData<Resource<String>>()
     val imageLiveData: LiveData<Resource<String>> = _imageLiveData
-
-    private val _wallpaperLiveData = MutableLiveData<Resource<List<Photo>>>()
-    val wallpaperLiveData: LiveData<Resource<List<Photo>>> = _wallpaperLiveData
 
     private val _favouriteWallpaper = MutableLiveData<Boolean>()
     val favouriteWallpaper: LiveData<Boolean> = _favouriteWallpaper
@@ -64,16 +61,6 @@ class DetailsViewModel @Inject constructor(
             _favouriteWallpaper.postValue(true)
         } catch (e: Exception) {
             _imageLiveData.postValue(Resource.Error(e.localizedMessage ?: UNEXPECTED_ERROR))
-        }
-    }
-
-    fun retrieveSavedWallpaper() = viewModelScope.launch(Dispatchers.IO) {
-        _wallpaperLiveData.postValue(Resource.Loading())
-        try {
-            val response = repository.getFavouriteWallpapers()
-            _wallpaperLiveData.postValue(Resource.Success(response))
-        } catch (e: Exception) {
-            _wallpaperLiveData.postValue(Resource.Error(e.localizedMessage ?: UNEXPECTED_ERROR))
         }
     }
 
