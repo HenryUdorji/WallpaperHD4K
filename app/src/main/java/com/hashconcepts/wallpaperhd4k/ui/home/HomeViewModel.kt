@@ -21,13 +21,12 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val serviceApi: ServiceApi,
-    private val repository: WallpaperRepository,
     private val networkManager: NetworkManager
 ) : ViewModel() {
 
     val networkObserver = networkManager.observeConnectionStatus
 
-    val wallPapers = Pager(config = PagingConfig(30), pagingSourceFactory = {
+    val wallPapers = Pager(config = PagingConfig(20), pagingSourceFactory = {
         WallpaperDataSource(serviceApi)
     }).flow.cachedIn(viewModelScope)
 
