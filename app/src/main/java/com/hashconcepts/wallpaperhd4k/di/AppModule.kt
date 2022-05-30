@@ -1,6 +1,7 @@
 package com.hashconcepts.wallpaperhd4k.di
 
 import android.app.Application
+import android.app.WallpaperManager
 import android.content.Context
 import androidx.room.Room
 import androidx.room.migration.Migration
@@ -83,5 +84,9 @@ internal object AppModule {
     @Provides
     @Singleton
     fun provideContext(application: Application): Context = application.applicationContext
+
+    @Provides
+    @Singleton
+    fun provideWallpaperManager(@ApplicationContext context: Context): WallpaperManager = WallpaperManager.getInstance(context)
 
 }

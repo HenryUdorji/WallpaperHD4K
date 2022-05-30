@@ -36,6 +36,8 @@ class DetailsViewModel @Inject constructor(
     private val _imageLiveData = MutableLiveData<Resource<String>>()
     val imageLiveData: LiveData<Resource<String>> = _imageLiveData
 
+    var bitmapImage: Bitmap? = null
+
     private val _favouriteWallpaper = MutableLiveData<Boolean>()
     val favouriteWallpaper: LiveData<Boolean> = _favouriteWallpaper
 
@@ -64,7 +66,7 @@ class DetailsViewModel @Inject constructor(
         }
     }
 
-    fun downloadImage(imageUrl: String) = viewModelScope.launch (Dispatchers.IO) {
+    fun downloadImage(imageUrl: String) = viewModelScope.launch(Dispatchers.IO) {
         _imageLiveData.postValue(Resource.Loading())
         if (networkObserver.value == true) {
             try {
@@ -75,8 +77,11 @@ class DetailsViewModel @Inject constructor(
                 _imageLiveData.postValue(Resource.Error(e.localizedMessage ?: UNEXPECTED_ERROR))
             }
         } else {
-            _imageLiveData.postValue(Resource.Error(
-                "internet not available, check connection"))
+            _imageLiveData.postValue(
+                Resource.Error(
+                    "internet not available, check connection"
+                )
+            )
         }
     }
 
@@ -94,7 +99,6 @@ class DetailsViewModel @Inject constructor(
                 val imageUri =
                     resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
                 outputStream = resolver.openOutputStream(imageUri!!)
-                _imageLiveData.postValue(Resource.Success("Wallpaper downloaded successfully."))
             } else {
                 val imagesDir = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_DCIM
@@ -105,9 +109,11 @@ class DetailsViewModel @Inject constructor(
                 }
                 val image = File(imagesDir, "$name.jpeg")
                 outputStream = FileOutputStream(image)
-                _imageLiveData.postValue(Resource.Success("Wallpaper downloaded successfully."))
             }
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+            bitmapImage = bitmap
+            _imageLiveData.postValue(Resource.Success("Wallpaper downloaded successfully."))
+
             outputStream!!.flush()
             outputStream.close()
         } catch (e: IOException) {

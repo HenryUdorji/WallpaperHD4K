@@ -1,5 +1,6 @@
 package com.hashconcepts.wallpaperhd4k.ui.details
 
+import android.app.WallpaperManager
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,12 +16,14 @@ import com.hashconcepts.wallpaperhd4k.R
 import com.hashconcepts.wallpaperhd4k.data.models.Photo
 import com.hashconcepts.wallpaperhd4k.databinding.DetailsFragmentBinding
 import com.hashconcepts.wallpaperhd4k.databinding.OptionsBottomSheetDialogBinding
+import com.hashconcepts.wallpaperhd4k.databinding.WallpaperBottomSheetDialogBinding
 import com.hashconcepts.wallpaperhd4k.extentions.showErrorSnackbar
 import com.hashconcepts.wallpaperhd4k.extentions.showKProgressHUD
 import com.hashconcepts.wallpaperhd4k.extentions.showSuccessSnackbar
 import com.hashconcepts.wallpaperhd4k.utils.Resource
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -29,6 +32,9 @@ class DetailsFragment : Fragment() {
     private lateinit var binding: DetailsFragmentBinding
     private lateinit var photo: Photo
     private var isFavourite: Boolean = false
+
+    @Inject
+    lateinit var wallpaperManager: WallpaperManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,20 +130,20 @@ class DetailsFragment : Fragment() {
             callViewModel(photo.src.original)
         }
 
-        dialogBinding.medium.setOnClickListener {
-            bottomSheetDialog.dismiss()
-            callViewModel(photo.src.medium)
-        }
+//        dialogBinding.medium.setOnClickListener {
+//            bottomSheetDialog.dismiss()
+//            callViewModel(photo.src.medium)
+//        }
 
         dialogBinding.portrait.setOnClickListener {
             bottomSheetDialog.dismiss()
             callViewModel(photo.src.portrait)
         }
 
-        dialogBinding.small.setOnClickListener {
-            bottomSheetDialog.dismiss()
-            callViewModel(photo.src.small)
-        }
+//        dialogBinding.small.setOnClickListener {
+//            bottomSheetDialog.dismiss()
+//            callViewModel(photo.src.small)
+//        }
 
     }
 
@@ -150,6 +156,8 @@ class DetailsFragment : Fragment() {
                 is Resource.Success -> {
                     state.data?.let { Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show() }
                     progressDialog.dismiss()
+
+                    showWallpaperDialog()
                 }
                 is Resource.Loading -> {
                     progressDialog.show()
@@ -158,6 +166,33 @@ class DetailsFragment : Fragment() {
                     Snackbar.make(binding.root, state.message!!, Snackbar.LENGTH_LONG).show()
                 }
             }
+        }
+    }
+
+    private fun showWallpaperDialog() {
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        val dialogBinding: WallpaperBottomSheetDialogBinding =
+            WallpaperBottomSheetDialogBinding.inflate(
+                layoutInflater
+            )
+        bottomSheetDialog.setContentView(dialogBinding.root)
+
+        bottomSheetDialog.setOnDismissListener { dialog ->
+            dialog.dismiss()
+            binding.downloadFab.show()
+        }
+
+        bottomSheetDialog.show()
+
+        dialogBinding.cancel.setOnClickListener {
+            bottomSheetDialog.dismiss()
+            binding.downloadFab.show()
+        }
+
+        dialogBinding.ok.setOnClickListener {
+            wallpaperManager.setBitmap(viewModel.bitmapImage)
+            Snackbar.make(binding.root, "Wallpaper set successfully", Snackbar.LENGTH_LONG).show()
+            bottomSheetDialog.dismiss()
         }
     }
 
