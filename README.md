@@ -9,6 +9,12 @@
 - Different categories to select from
 - Only Dark mode available
 
+<a href="https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k">
+<img src="https://cdn.jsdelivr.net/gh/steverichey/google-play-badge-svg/img/en_get.svg" width="30%">
+</a>
+
+![Screens](resources/screens.png)
+
 # Download the App from Playstore
 [WallpaperHD4K](https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k)
 
