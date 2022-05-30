@@ -15,9 +15,6 @@
 
 ![Screens](images/merge_from_ofoct.jpg)
 
-# Download the App from Playstore
-[WallpaperHD4K](https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k)
-
 
 # Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
