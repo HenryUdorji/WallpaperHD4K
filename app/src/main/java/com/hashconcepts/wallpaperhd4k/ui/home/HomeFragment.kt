@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
@@ -29,7 +30,6 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
     private lateinit var wallpaperPagingAdapter: WallpaperPagingAdapter
-    private lateinit var progressDialog: KProgressHUD;
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,8 +71,8 @@ class HomeFragment : Fragment() {
                 }
             }
             adapter = wallpaperPagingAdapter.withLoadStateHeaderAndFooter(
-                header = WallpaperLoadStateAdapter { wallpaperPagingAdapter.retry() },
-                footer = WallpaperLoadStateAdapter { wallpaperPagingAdapter.retry() }
+                header = WallpaperLoadStateAdapter { wallpaperPagingAdapter::retry },
+                footer = WallpaperLoadStateAdapter { wallpaperPagingAdapter::retry }
             )
             setHasFixedSize(true)
         }

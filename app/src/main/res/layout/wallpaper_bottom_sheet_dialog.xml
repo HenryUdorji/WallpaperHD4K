@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/download_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:drawablePadding="20dp"
+        android:padding="10dp"
+        android:text="Set Wallpaper"
+        android:textAlignment="center"
+        android:theme="@style/TitleTextStyle" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/download_options"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:drawablePadding="20dp"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:text="Do you want to set downloaded wallpaper as your device wallpaper?"
+        android:theme="@style/BodyTextStyle" />
+
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message"
+        android:layout_marginTop="20dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="10dp"
+        android:text="Cancel"
+        android:theme="@style/BodyTextStyle" />
+
+    <TextView
+        android:id="@+id/ok"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Ok"
+        android:background="?selectableItemBackgroundBorderless"
+        android:theme="@style/BodyTextStyle" />
+
+</RelativeLayout>

@@ -27,14 +27,28 @@
         android:background="?android:attr/selectableItemBackground"
         android:drawablePadding="20dp"
         android:padding="10dp"
-        android:text="Original"
+        android:text="Original (Image size is usually very large)"
         android:theme="@style/BodyTextStyle" />
 
+<!--    <TextView-->
+<!--        android:id="@+id/medium"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Medium"-->
+<!--        android:theme="@style/BodyTextStyle"-->
+<!--        android:layout_below="@id/original"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:drawablePadding="20dp"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:padding="10dp"-->
+<!--        android:background="?android:attr/selectableItemBackground"-->
+<!--        />-->
+
     <TextView
-        android:id="@+id/medium"
+        android:id="@+id/portrait"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Medium"
+        android:text="Portrait"
         android:theme="@style/BodyTextStyle"
         android:layout_below="@id/original"
         android:layout_marginTop="20dp"
@@ -44,32 +58,17 @@
         android:background="?android:attr/selectableItemBackground"
         />
 
-    <TextView
-        android:id="@+id/portrait"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Portrait"
-        android:theme="@style/BodyTextStyle"
-        android:layout_below="@id/medium"
-        android:layout_marginTop="20dp"
-        android:drawablePadding="20dp"
-        android:layout_gravity="center_vertical"
-        android:padding="10dp"
-        android:background="?android:attr/selectableItemBackground"
-        />
-
-    <TextView
-        android:id="@+id/small"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Small"
-        android:theme="@style/BodyTextStyle"
-        android:layout_below="@id/portrait"
-        android:layout_marginTop="20dp"
-        android:drawablePadding="20dp"
-        android:layout_gravity="center_vertical"
-        android:padding="10dp"
-        android:background="?android:attr/selectableItemBackground"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/small"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/portrait"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="?android:attr/selectableItemBackground"-->
+<!--        android:drawablePadding="20dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:text="Small"-->
+<!--        android:theme="@style/BodyTextStyle" />-->
 
 </RelativeLayout>
