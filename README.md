@@ -10,8 +10,8 @@
 - Different categories to select from
 - Dark and light mode
 
-# Download the App
-[WallpaperHD4K apk](https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k) - From playstore
+# Download the App from Playstore
+[WallpaperHD4K](https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k)
 
 
 # Built With 🛠
