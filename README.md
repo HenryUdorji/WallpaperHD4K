@@ -11,7 +11,7 @@
 - Dark and light mode
 
 # Download the App
-[WallpaperHD4K apk](Theater.apk)
+[WallpaperHD4K apk](https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k) - From playstore
 
 
 # Built With 🛠
