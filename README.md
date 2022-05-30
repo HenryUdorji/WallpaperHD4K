@@ -3,12 +3,11 @@
 **WallpaperHD4K** is a nice looking app that consumes api data from api.pexels.com to show beautiful wallpapers
 
 # Features
-- Search
 - Save images to view when offline
 - Set device wallpaper directly from app
 - download wallpaper in different resolution
 - Different categories to select from
-- Dark and light mode
+- Only Dark mode available
 
 # Download the App from Playstore
 [WallpaperHD4K](https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k)
@@ -35,3 +34,5 @@
 
 
 ## TODO 🗒️
+- Search feature
+- Fix progressbar not visible when images are loading
