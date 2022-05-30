@@ -13,7 +13,7 @@
 <img src="https://cdn.jsdelivr.net/gh/steverichey/google-play-badge-svg/img/en_get.svg" width="30%">
 </a>
 
-![Screens](resources/screens.png)
+![Screens](images/Screenshot_2022-05-30-10-40-02-943_com.hashconcepts.wallpaperhd4k.jpg)
 
 # Download the App from Playstore
 [WallpaperHD4K](https://play.google.com/store/apps/details?id=com.hashconcepts.wallpaperhd4k)
