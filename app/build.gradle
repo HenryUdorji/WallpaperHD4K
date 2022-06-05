@@ -8,6 +8,10 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
+def localPropertiesFile = rootProject.file("local.properties")
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(localPropertiesFile))
+
 android {
     compileSdk 31
 
@@ -23,10 +27,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("C:/Users/ifechukwu.udorji/WorkFolder/Personal/Android/WallpaperHD4K/HashConceptsKey.jks")
-            storePassword "@Henry1998"
-            keyAlias "HashConceptsKey"
-            keyPassword "@Henry1998"
+            storeFile file(localProperties['SIGNING_JKS_FILE_PATH'])
+            storePassword localProperties['SIGNING_KEYSTORE_PASSWORD']
+            keyAlias localProperties['SIGNING_KEY_ALIAS']
+            keyPassword localProperties['SIGNING_KEY_PASSWORD']
         }
     }
 
